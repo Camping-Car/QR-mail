@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロテイン購入</title>
+    <style>
+        /* ページ全体のレイアウト：ボタンを画面の中央に配置 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f6f8; /* 薄いグレーの背景色 */
+        }
+        
+        /* 購入ボタンのデザイン */
+        .btn {
+            display: inline-block;
+            background-color: #007bff; /* ボタンの色（青）。ブランドカラーに合わせて変更可能 */
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* 軽い影をつけて立体感を出す */
+        }
+        
+        /* ボタンをホバー（タップ）した時の色変化 */
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <a id="mailBtn" href="#" class="btn">プロテイン購入</a>
+
+    <script>
+        // ================= メールの内容設定 =================
+        const email = "info@dr-gene.jp";
+        const subject = "定期便プロテイン追加希望";
+        const body = "※下記情報を記載いただき、メール送付をお願いいたします！\n\n" +
+                     "氏名：\n" +
+                     "メールアドレス：\n" +
+                     "電話番号：\n\n" +
+                     "※当ショップにご登録の情報をご記載ください\n" +
+                     "※メールの確認後、お客様の体質タイプに合わせたプロテインをメールにてご案内させていただきます。";
+
+        // ================= 自動変換とリンク生成 =================
+        // encodeURIComponentを使用して、特殊文字や改行が正しく解析されるようにする
+        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // 生成したリンクをボタンの href 属性にセットする
+        const btn = document.getElementById('mailBtn');
+        btn.href = mailtoLink;
+
+        // ※注意：以前の「自動遷移」のコードは削除しました。
+        // これにより、ユーザーが「プロテイン購入」ボタンを意図的にタップした時のみ、メールアプリが起動します。
+    </script>
+</body>
+</html>
